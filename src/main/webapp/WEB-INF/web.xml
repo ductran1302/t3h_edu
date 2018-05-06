@@ -11,15 +11,13 @@
 	language governing permissions and limitations under the License. -->
 
 <!-- START SNIPPET: e1 -->
- 
-<!-- <web-app version="2.3" xmlns="http://java.sun.com/xml/ns/j2ee"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_3_0.xsd">
- -->
- <web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-		xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
-		version="3.0">
-		 
+
+<!-- <web-app version="2.3" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_3_0.xsd"> -->
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+
 	<display-name>Mobifone Portal for Mobile</display-name>
 
 	<session-config>
@@ -41,25 +39,17 @@
 	</jsp-config>
 
 	<listener>
-		<listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener
-		</listener-class>
+		<listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
 	</listener>
 
 	<!--filter> <filter-name>SingleLogin</filter-name> <filter-class>org.apache.shiro.realm.neo.SingleLogin</filter-class> 
 		</filter> <filter-mapping> <filter-name>SingleLogin</filter-name> <url-pattern>/*</url-pattern> 
 		</filter-mapping -->
 	<!-- Cau hinh de tu redirect -->
-	<!-- 
-	<security-constraint>
-		<web-resource-collection>
-			<web-resource-name>TAX 1.0</web-resource-name>
-			<url-pattern>/*</url-pattern>
-		</web-resource-collection>
-		<user-data-constraint>
-			<transport-guarantee>CONFIDENTIAL</transport-guarantee>
-		</user-data-constraint>
-	</security-constraint>
- -->
+	<!-- <security-constraint> <web-resource-collection> <web-resource-name>TAX 
+		1.0</web-resource-name> <url-pattern>/*</url-pattern> </web-resource-collection> 
+		<user-data-constraint> <transport-guarantee>CONFIDENTIAL</transport-guarantee> 
+		</user-data-constraint> </security-constraint> -->
 
 	<filter>
 		<filter-name>ShiroFilter</filter-name>
@@ -74,33 +64,57 @@
 		<dispatcher>INCLUDE</dispatcher>
 		<dispatcher>ERROR</dispatcher>
 	</filter-mapping>
-	<filter>
-		<filter-name>httpHeaderSecurity</filter-name>
-		<filter-class>org.apache.catalina.filters.HttpHeaderSecurityFilter
-		</filter-class>
-		<init-param>
-			<param-name>antiClickJackingEnabled</param-name>
-			<param-value>true</param-value>
-		</init-param>
-		<init-param>
-			<param-name>antiClickJackingOption</param-name>
-			<param-value>DENY</param-value>
-		</init-param>
-	</filter>
-	<filter-mapping>
-		<filter-name>httpHeaderSecurity</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
+	<!-- <filter> <filter-name>httpHeaderSecurity</filter-name> <filter-class>org.apache.catalina.filters.HttpHeaderSecurityFilter 
+		</filter-class> <init-param> <param-name>antiClickJackingEnabled</param-name> 
+		<param-value>true</param-value> </init-param> <init-param> <param-name>antiClickJackingOption</param-name> 
+		<param-value>DENY</param-value> </init-param> </filter> <filter-mapping> 
+		<filter-name>httpHeaderSecurity</filter-name> <url-pattern>/*</url-pattern> 
+		</filter-mapping> -->
 	<servlet>
-    <description></description>
-    <display-name>UserController</display-name>
-    <servlet-name>UserController</servlet-name>
-    <servlet-class>t3h.edu.controller.UserController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>UserController</servlet-name>
-    <url-pattern>/UserController</url-pattern>
-  </servlet-mapping>
+		<description></description>
+		<display-name>UserController</display-name>
+		<servlet-name>UserController</servlet-name>
+		<servlet-class>t3h.edu.controller.UserController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UserController</servlet-name>
+		<url-pattern>/UserController</url-pattern>
+	</servlet-mapping>
 
+	<servlet>
+		<description></description>
+		<display-name>Product</display-name>
+		<servlet-name>Product</servlet-name>
+		<servlet-class>t3h.edu.controller.ProductController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Product</servlet-name>
+		<url-pattern>/product</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>ConnectorServlet</servlet-name>
+		<servlet-class>com.ckfinder.connector.ConnectorServlet</servlet-class>
+		<init-param>
+			<description>
+				Path to configuration file can be relative path inside application,
+				absolute path on local file system or UNC path.
+			</description>
+			<param-name>XMLConfig</param-name>
+			<param-value>/WEB-INF/config.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ConnectorServlet</servlet-name>
+		<url-pattern>
+			/assets/ckfinder/core/connector/java/connector.java
+		</url-pattern>
+	</servlet-mapping>
 </web-app>
 <!-- END SNIPPET: e1 -->

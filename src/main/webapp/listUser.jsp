@@ -292,7 +292,7 @@
 
 <script type="text/javascript">
 	//doan nay de khoi tao cach viet theo phan trang
-	var record_per_page = 2, page = 1, nor = 0;
+	var record_per_page = 3, page = 1, nor = 0;
 	var getData //= onGetData(page,record_per_page);
 	var objPage1 = new pageTemplates('', 'div_page_section1', 'pClick', getData);
 	var objPage = new pageTemplates('', 'div_page_section2', 'pClick',
@@ -367,8 +367,8 @@
 	function onStartSearch(total) {
 		objPage.setCurrentPage(1);
 		objPage.returnDataCount(total);
-		//objPage1.setCurrentPage(1);
-		//objPage1.returnDataCount(total);
+		objPage1.setCurrentPage(1);
+		objPage1.returnDataCount(total);
 	}
 
 	function modal_update() {
