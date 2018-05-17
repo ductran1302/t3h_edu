@@ -1,4 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
 <%@include file="base_fragment/header.jsp"%>
+
 <!-- Content Wrapper. Contains page content -->
 <script type="text/javascript"
 	src="assets/bootstrap/js/jquery.uploadPreview.min.js"></script>
@@ -187,58 +193,14 @@
             preview_box: "#image-preview",
             label_field: "#image-label"
         });
-        //CKEDITOR.replace('editor');
         editor = $('textarea.editor').ckeditor(function(){ 
-            CKFinder.setupCKEditor( this, '/assets/ckfinder/' ); 
+            CKFinder.setupCKEditor( this, 'assets/ckfinder/' ); 
         });
-        //var editor = CKEDITOR.replace( 'editor' );
-        //var editor = CKEDITOR.replace('editor');
-        //CKFinder.setupCKEditor(editor, '/assets/ckfinder/');
-        
-        
-        
     });
-
-    function readURL(input) {
-
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $('#image-upload').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-    $("#image-upload").change(function() {
-        readURL(this);
-    });
-	
     $('#doNew').click(function(){
     	addNewProduct();
     });
-    /*
-    function addNewProduct(){
-    	var obj = new Object();
-    	obj.action = "";
-		obj.product_name=$("#product_name").val().trim();
-		obj.old_price=$("#old_price").val().trim();
-		obj.new_price=$("#new_price").val().trim();
-		obj.product_ma=$("#product_ma").val().trim();
-		obj.product_summary=$("#product_summary").val().trim();
-		obj.product_link=$("#product_link").val().trim();
-		//obj.seo_title=$("#seo_title").val().trim();
-		//obj.seo_keyword=$("#seo_keyword").val().trim();
-		//obj.seo_description=$("#seo_description").val().trim();
-		//obj.do_mem=$("#do_mem").val().trim();
-		//obj.do_ben_mau=$("#do_ben_mau").val().trim();
-		//obj.mat_do_soi=$("#mat_do_soi").val().trim();
-		//obj.ma_hang=$("#ma_hang").val().trim();
-		//obj.brand=$("#brand").val().trim();
-		//obj.seo_url=$("#seo_url").val().trim();
-		obj.avatar=$('#image-upload')[0].files[0];
-		obj.content= CKEDITOR.instances.content.getData().trim().replace("\r\n","").replace("\n",""); 
-		ajaxFunc(obj);
-    }*/
+ 
     function addNewProduct(){
     	var obj = new FormData();
     	obj.append("action","");

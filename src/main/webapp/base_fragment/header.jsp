@@ -20,7 +20,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=8" />
-<title>${n.i18n.app_title}</title>
 <meta
 	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
 	name='viewport'>
@@ -105,11 +104,6 @@
 <script type="text/javascript"
 	src="style/page_template/page_templates.js"></script>
 <script src="style/chosen.jquery.min.js" type="text/javascript"></script>
-<script>
-         function Go(l){
-            document.location.href=l;
-         }
-      </script>
 </head>
 <body class="skin-blue-light sidebar-mini">
 	<div class="wrapper">
@@ -198,10 +192,11 @@
 						</span>
 					</a>
 						<ul class="treeview-menu">
-							<li><a href=""><i class="fa fa-circle-o"></i>Bài viết</a></li>
-							<li><a href="changepassword.jsp"><i
+							<li><a href=""><i
+									class="fa fa-circle-o"></i>Bài viết</a></li>
+							<li><a href="listProduct.jsp"><i
 									class="fa fa-circle-o"></i>Quản lí sản phẩm</a></li>
-							<li><a href="grant_role.jsp"><i class="fa fa-circle-o"></i>Quản
+							<li><a href=""><i class="fa fa-circle-o"></i>Quản
 									lí</a></li>
 						</ul></li>
 				</ul>

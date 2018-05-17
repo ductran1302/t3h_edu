@@ -1,8 +1,45 @@
-<head>
-<title>Nguoi dung</title>
-</head>
 <%@include file="base_fragment/header.jsp"%>
+<script type="text/javascript"
+	src="assets/bootstrap/js/jquery.uploadPreview.min.js"></script>
+<style type="text/css">
+#image-preview {
+	width: 100%;
+	height: 20%;
+	position: relative;
+	overflow: hidden;
+	background-color: #ffffff;
+	color: #ecf0f1;
+}
 
+#image-preview input {
+	line-height: 100px;
+	font-size: 100px;
+	position: absolute;
+	opacity: 0;
+	z-index: 10;
+}
+
+#image-preview label {
+	position: absolute;
+	z-index: 5;
+	opacity: 0.4;
+	cursor: pointer;
+	background-color: #bdc3c7;
+	/*
+	width: 100px;
+	height: 25px;
+	*/
+	font-size: 10px;
+	line-height: 25px;
+	text-transform: uppercase;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	text-align: center;
+}
+</style>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 	<section class="main content">
@@ -50,34 +87,33 @@
 														<div class="form-group">
 															<div id="policyIdParam" class="">
 																<label for="policy" class="control-label col-sm-2"
-																	title="Click to select a policy">${n.i18n.users_user_name }</label>
+																	title="Click to select a policy">Mã sản phẩm</label>
 																<div class="col-sm-4">
 																	<input type="text" class="form-control"
-																		name="users_user_name" id="users_user_name"><span
-																		id="users_user_name_msg"></span>
+																		name="product_id" id="product_id"><span
+																		id="product_id_msg"></span>
 																</div>
 															</div>
 															<div id="messageTypes">
 																<label for='${n.i18n.users_first_name}'
 																	class="control-label col-sm-2"
-																	title='Click to select a ${n.i18n.users_first_name}'>
-																	${n.i18n.users_first_name} </label>
+																	title='Click to select a product_name'>
+																	product_name </label>
 																<div class="col-sm-4">
 																	<input type="text" class="form-control"
-																		name="users_first_name" id="users_first_name"><span
-																		id="users_first_name_msg"></span>
+																		name="product_name" id="product_name"><span
+																		id="product_name_msg"></span>
 																</div>
 															</div>
 														</div>
 														<div class="form-group">
 															<div id="policyIdParam" class="">
 																<label for="policy" class="control-label col-sm-2"
-																	title="Click to select ">${n.i18n.users_last_name}
-																</label>
+																	title="Click to select ">product_mahang </label>
 																<div class="col-sm-4">
 																	<input type="text" class="form-control"
-																		name="users_last_name" id="users_last_name"><span
-																		id="users_last_name_msg"></span>
+																		name="product_mahang" id="product_mahang"><span
+																		id="product_mahang_msg"></span>
 																</div>
 															</div>
 															<div id="messageTypes"></div>
@@ -124,50 +160,104 @@
 								<div class="modal-content">
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal"
-											aria-hidden="true">×</button>
+											aria-hidden="true">x</button>
 										<h4 class="modal-title">${n.i18n.modal_title_edit}</h4>
 									</div>
 
 									<div class="modal-body">
 										<form class="form-horizontal" role="form">
-											<div class="form-group">
-												<label class="col-md-2 control-label"
-													for="modal_users_user_name">${n.i18n.users_user_name}
-												</label>
-												<div class="col-md-3">
-													<input type="text" class="form-control" id="modal_update1"
-														readonly
-														placeholder='${n.i18n.crud_input} ${n.i18n.users_user_name}' />
+											<div class="row">
+												<div class="col-md-3 col-sm-3">
+													<div id="image-preview">
+														<label for="image-upload" id="image-label">Choose
+															File</label> <input type="file" name="image" src="#"
+															id="image-upload" accept="image/*" />
+													</div>
 												</div>
-												<label class="col-md-3 control-label"
-													for="modal_role_role_name">${n.i18n.users_first_name}</label>
-												<div class="col-md-3">
-													<input type="text" class="form-control" id="modal_update2"
-														placeholder='${n.i18n.crud_input} ${n.i18n.users_first_name}' />
+												<div class="col-md-6 col-sm-6 col-xs-12 clearfix">
+													<div class="form-group">
+														<label for="policy" class="control-label col-sm-4"
+															title="Click to select" style="text-align: left">Mã
+															sản phẩm</label>
+														<div class="col-sm-8">
+															<input class="form-control"
+																placeholder="Nhập mã sản phẩm" id="product_mahang"></input>
+														</div>
+													</div>
+													<div class="form-group">
+														<div>
+															<label for="policy" class="control-label col-sm-4"
+																title="Click to select" style="text-align: left">Nhập
+																tên sản phẩm</label>
+															<div class="col-sm-8">
+																<input type="text" class="form-control"
+																	placeholder="Nhập tên sản phẩm" id="product_name"></input>
+															</div>
+														</div>
+													</div>
+													<!-- ngIf: IsPromotion==true -->
+													<div class="form-group">
+														<label for="policy" class="control-label col-sm-4"
+															title="Click to select" style="text-align: left">Nhập
+															giá cũ</label>
+														<div class="col-sm-8">
+															<input class="form-control"
+																placeholder="Giá cũ sản phẩm (đ)" id="old_price"></input>
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="policy" class="control-label col-sm-4"
+															title="Click to select" style="text-align: left">Nhập
+															giá mới</label>
+														<div class="col-sm-8">
+															<input class="form-control"
+																placeholder="Giá mới sản phẩm (đ)" id="new_price"></input>
+														</div>
+													</div>
+
+													<div class="form-group">
+														<label for="policy" class="control-label col-sm-4"
+															title="Click to select" style="text-align: left">Mô
+															tả ngắn</label>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-12">
+															<textarea rows="4" class="form-control"
+																style='resize: vertical;' id="product_sumary"> san pham</textarea>
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="policy" class="control-label col-sm-4"
+															title="Click to select" style="text-align: left">Link</label>
+														<div class="col-sm-12">
+															<input class="form-control" placeholder="Link"
+																id="product_link"></input>
+														</div>
+													</div>
+													<!-- ngRepeat: item in ProductOptions -->
+
 												</div>
 											</div>
-											<div class="form-group">
-												<label class="col-md-2 control-label"
-													for="modal_role_description">${n.i18n.users_last_name}</label>
-												<div class="col-md-3">
-													<input type="text" class="form-control" id="modal_update3"
-														placeholder='${n.i18n.crud_input} ${n.i18n.users_last_name}' />
-												</div>
-												<label class="col-md-3 control-label"
-													for="modal_role_description">${n.i18n.users_user_email}</label>
-												<div class="col-md-3">
-													<input type="text" class="form-control" id="modal_update4"
-														placeholder='${n.i18n.crud_input} ${n.i18n.users_user_email}' />
-												</div>
-											</div>
-											<div class="form-group">
-												<label class="col-md-2 control-label"
-													for="modal_role_description">${n.i18n.users_user_phone}</label>
-												<div class="col-md-3">
-													<input type="text" class="form-control" id="modal_update5"
-														placeholder='${n.i18n.crud_input} ${n.i18n.users_user_phone}' />
+											<div class="row">
+												<div class="col-md-12 col-sm-12 col-xs-12">
+													<div class="product-tabs">
+														<ul class="nav nav-tabs">
+															<!-- ngRepeat: item in ProductTabs -->
+															<li role="presentation"><a
+																data-toggle="tab" href="#tab1">Chi
+																	tiết sản phẩm</a></li>
+															<!-- end ngRepeat: item in ProductTabs -->
+														</ul>
+														<div class="tab-content">
+															<!-- ngRepeat: item in ProductTabs -->
+															<textarea name="content" class="editor" id="content"
+																rows="4"></textarea>
+															<!-- end ngRepeat: item in ProductTabs -->
+														</div>
+													</div>
 												</div>
 											</div>
+
 										</form>
 									</div>
 									<div class="modal-footer">
@@ -189,7 +279,7 @@
 								<div class="modal-content">
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal"
-											aria-hidden="true">×</button>
+											aria-hidden="true">Ã</button>
 										<h4 class="modal-title">${n.i18n.crud_delete_button_message}</h4>
 									</div>
 
@@ -308,7 +398,7 @@
 		$('#doSearch').click(function() {
 			$('#result').html('${n.i18n.crud_process_message}');
 			$.ajax({
-				url : 'UserController?action=listUser',
+				url : 'product?action=listProduct',
 				method : 'GET',
 				data : getParams(-1, record_per_page),
 				success : function(data) {
@@ -322,7 +412,7 @@
 		});
 		$('#doSearch').click();
 		$('#goNew').click(function() {
-			window.location.href = 'user.jsp';
+			window.location.href = 'product.jsp';
 		});
 	});
 
@@ -337,7 +427,7 @@
 	//Ham nay tu dong duoc goi sau khi click vao cac so...:
 	function onGetData(page, size) {
 		$.ajax({
-			url : 'UserController?action=listUser',
+			url : 'product?action=listProduct',
 			data : getParams(page, record_per_page),
 			method : 'GET',
 			success : function(data) {
@@ -354,9 +444,9 @@
 	//Ham tra ve chuoi parameters, truyen vao ajax de lay nop, nor va du lieu hien thi
 	function getParams(page, record_per_page) {
 		var exec = {
-			"user_name" : $('#users_user_name').val(),
-			"firstName" : $('#users_first_name').val(),
-			"lastName" : $('#users_last_name').val(),
+			"product_id" : $('#product_id').val(),
+			"product_name" : $('#product_name').val(),
+			"product_mahang" : $('#product_mahang').val(),
 			//"email" : $('#modal_update4').val(),
 			//"phone" : $('#modal_update5').val(),
 			"record_per_page" : record_per_page,
@@ -375,6 +465,9 @@
 	}
 
 	function modal_update() {
+		editor = $('textarea.editor').ckeditor(function(){ 
+            CKFinder.setupCKEditor( this, '${pageContext.request.contextPath}/assets/ckfinder/' ); 
+        });
 		var param = {
 			"user_name" : $('#modal_update1').val(),
 			"firstName" : $('#modal_update2').val(),
@@ -386,7 +479,7 @@
 			return;
 		}
 		$.ajax({
-			url : 'UserController?action=edit',
+			url : 'product?action=edit',
 			method : 'POST',
 			data : param,
 			success : function(data) {
@@ -424,7 +517,7 @@
 			return;
 		}
 		$.ajax({
-			url : 'UserController?action=delete',
+			url : 'product?action=delete',
 			data : param,
 			method : 'POST',
 			success : function(data) {
@@ -455,6 +548,23 @@
 			console.log("hide");
 		}
 	});
+	
+    $(document).ready(function() {
+        $.uploadPreview({
+            input_field: "#image-upload",
+            preview_box: "#image-preview",
+            label_field: "#image-label"
+        });
+        //CKEDITOR.replace('editor');
+
+        
+        //var editor = CKEDITOR.replace( 'editor' );
+        //var editor = CKEDITOR.replace('editor');
+        //CKFinder.setupCKEditor(editor, '/assets/ckfinder/');
+        
+        
+        
+    });
 </script>
 <!-- ./wrapper -->
 

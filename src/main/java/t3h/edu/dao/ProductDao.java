@@ -29,9 +29,9 @@ public class ProductDao {
 			prepared.setString(2, product.getOldPrice());
 			prepared.setString(3, product.getNewPrice());
 			prepared.setString(4, product.getProductMahang());
-			prepared.setString(5, product.getProductSummary());
+			prepared.setString(5, product.getProductSumary());
 			prepared.setString(6, product.getProductLink());
-			prepared.setString(7, product.getProductContent());
+			prepared.setString(7, product.getProductDescription());
 			prepared.setString(8, product.getProductAvatar());
 			prepared.executeUpdate();
 			return "1";
@@ -54,7 +54,7 @@ public class ProductDao {
 		}
 	}
 	
-	public List<Object> getAllUsers(String productId, String productName, String productMaHang, String rec_per_page,
+	public List<Object> getAllProducts(String productId, String productName, String productMaHang, String rec_per_page,
 			String page) {
 		List<Object> list = new ArrayList<Object>();
 		try {
@@ -75,13 +75,18 @@ public class ProductDao {
 				list.add(rs.getString(2));
 			} else {
 				while (rs.next()) {
-					User user = new User();
-					user.setUserName(rs.getString("user_name"));
-					user.setFirstName(rs.getString("first_name"));
-					user.setLastName(rs.getString("last_name"));
-					user.setEmail(rs.getString("user_email"));
-					user.setUserPhone(rs.getString("user_phone"));
-					list.add(user);
+					Product product = new Product();
+					product.setProductId(rs.getString("product_id"));
+					product.setProductName(rs.getString("product_name"));
+					product.setProductMahang(rs.getString("product_mahang"));
+					product.setOldPrice(rs.getString("old_price"));
+					product.setNewPrice(rs.getString("new_price"));
+					product.setProductSumary(rs.getString("product_sumary"));
+					product.setProductLink(rs.getString("product_link"));
+					product.setProductAvatar(rs.getString("product_avatar"));
+					product.setProductDescription(rs.getString("product_description"));
+					product.setProductStatus(rs.getString("product_status"));
+					list.add(product);
 				}
 			}
 		} catch (SQLException e) {

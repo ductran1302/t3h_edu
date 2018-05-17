@@ -1,34 +1,34 @@
 package t3h.edu.model;
 
 public class Product {
-	//private String productId;
+	private String productId;
 	private String productName;
-	private String productStatus;
-	private String productSummary;
+	private String productMahang;
 	private String oldPrice;
 	private String newPrice;
+	private String productSumary;
 	private String productLink;
-	private String productContent;
 	private String productAvatar;
-	private String productMahang;
+	private String productDescription;
+	private String productStatus;
 	
+	public String getProductId() {
+		return productId;
+	}
+	public void setProductId(String productId) {
+		this.productId = productId;
+	}
 	public String getProductName() {
 		return productName;
 	}
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
-	public String getProductStatus() {
-		return productStatus;
+	public String getProductMahang() {
+		return productMahang;
 	}
-	public void setProductStatus(String productStatus) {
-		this.productStatus = productStatus;
-	}
-	public String getProductSummary() {
-		return productSummary;
-	}
-	public void setProductSummary(String productSummary) {
-		this.productSummary = productSummary;
+	public void setProductMahang(String productMahang) {
+		this.productMahang = productMahang;
 	}
 	public String getOldPrice() {
 		return oldPrice;
@@ -42,17 +42,17 @@ public class Product {
 	public void setNewPrice(String newPrice) {
 		this.newPrice = newPrice;
 	}
+	public String getProductSumary() {
+		return productSumary;
+	}
+	public void setProductSumary(String productSumary) {
+		this.productSumary = productSumary;
+	}
 	public String getProductLink() {
 		return productLink;
 	}
 	public void setProductLink(String productLink) {
 		this.productLink = productLink;
-	}
-	public String getProductContent() {
-		return productContent;
-	}
-	public void setProductContent(String productContent) {
-		this.productContent = productContent;
 	}
 	public String getProductAvatar() {
 		return productAvatar;
@@ -60,11 +60,18 @@ public class Product {
 	public void setProductAvatar(String productAvatar) {
 		this.productAvatar = productAvatar;
 	}
-	public String getProductMahang() {
-		return productMahang;
+	public String getProductDescription() {
+		return productDescription;
 	}
-	public void setProductMahang(String productMahang) {
-		this.productMahang = productMahang;
+	public void setProductDescription(String productDescription) {
+		this.productDescription = productDescription;
 	}
+	public String getProductStatus() {
+		return productStatus;
+	}
+	public void setProductStatus(String productStatus) {
+		this.productStatus = productStatus;
+	}
+	
 	
 }
